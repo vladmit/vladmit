@@ -852,10 +852,15 @@ AAAAAAQABADMAAAAEDEAAAAA</picture>
 			<code xsi:type="xs:string">000000010</code>
 			<description>Закупочная</description>
 		</predefined>
-		<useStandardCommands>false</useStandardCommands>
+		<predefined name="Оптовая" id="d6085e77-ae70-481b-ac28-4f7b5361d042">
+			<code xsi:type="xs:string">000000011</code>
+			<description>Оптовая</description>
+		</predefined>
 		<quickChoice>true</quickChoice>
 		<inputByString>Description</inputByString>
 		<inputByString>Code</inputByString>
+		<defaultObjectForm>Catalog.ВидыЦен.Form.ФормаЭлемента</defaultObjectForm>
+		<defaultListForm>Catalog.ВидыЦен.Form.ФормаСписка</defaultListForm>
 		<explanation>
 			<v8:item>
 				<v8:lang>ru</v8:lang>
@@ -875,6 +880,139 @@ AAAAAAQABADMAAAAEDEAAAAA</picture>
 			</v8:item>
 		</listPresentation>
 		<predefinedDataUpdate>DontAutoUpdate</predefinedDataUpdate>
+		<attribute name="Тест" id="2082a7fa-dcb6-4be8-80f8-0dc7a49cb356">
+			<synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Тест</v8:content>
+				</v8:item>
+			</synonym>
+			<type>
+				<v8:Type>xs:string</v8:Type>
+				<v8:StringQualifiers>
+					<v8:Length>10</v8:Length>
+					<v8:AllowedLength>Variable</v8:AllowedLength>
+				</v8:StringQualifiers>
+			</type>
+			<fillingValue xsi:type="xs:string"/>
+		</attribute>
+		<form name="ФормаЭлемента" id="34b357fe-722f-40e6-9300-3001116045bc">
+			<synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма элемента</v8:content>
+				</v8:item>
+			</synonym>
+			<form>
+				<mf:serverModule version="1" startAddr="0">
+					<bsch:cmdOpCode>22,22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0,0</bsch:cmdOperand>
+				</mf:serverModule>
+				<mf:clientModule version="1" startAddr="0">
+					<bsch:cmdOpCode>22,22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0,0</bsch:cmdOperand>
+				</mf:clientModule>
+				<mf:serverWOContextModule version="1">
+					<bsch:cmdOpCode>22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0</bsch:cmdOperand>
+				</mf:serverWOContextModule>
+				<mf:clientServerWOContextModule version="1">
+					<bsch:cmdOpCode>22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0</bsch:cmdOperand>
+				</mf:clientServerWOContextModule>
+				<mf:attributes>
+					<mf:attribute name="Объект">
+						<mf:type>
+							<v8:Type>cfg:CatalogObject.ВидыЦен</v8:Type>
+						</mf:type>
+						<mf:main>true</mf:main>
+						<mf:storedData>true</mf:storedData>
+					</mf:attribute>
+				</mf:attributes>
+				<mf:mainElement>
+					<mf:autoCommandBar name="ФормаКоманднаяПанель" type="AutoCommandBar"/>
+					<mf:windowOpeningMode>LockOwnerWindow</mf:windowOpeningMode>
+					<mf:field name="Код" kind="InputField" dataPath="Объект.Code">
+						<mf:contextMenu name="КодКонтекстноеМеню" type="ContextMenu"/>
+					</mf:field>
+					<mf:field name="Наименование" kind="InputField" dataPath="Объект.Description">
+						<mf:contextMenu name="НаименованиеКонтекстноеМеню" type="ContextMenu"/>
+					</mf:field>
+				</mf:mainElement>
+			</form>
+		</form>
+		<form name="ФормаСписка" id="12c9b0fa-365f-497f-b664-c81da020e626">
+			<synonym>
+				<v8:item>
+					<v8:lang>ru</v8:lang>
+					<v8:content>Форма списка</v8:content>
+				</v8:item>
+			</synonym>
+			<form>
+				<mf:serverModule version="1" startAddr="0">
+					<bsch:cmdOpCode>22,22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0,0</bsch:cmdOperand>
+				</mf:serverModule>
+				<mf:clientModule version="1" startAddr="0">
+					<bsch:cmdOpCode>22,22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0,0</bsch:cmdOperand>
+				</mf:clientModule>
+				<mf:serverWOContextModule version="1">
+					<bsch:cmdOpCode>22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0</bsch:cmdOperand>
+				</mf:serverWOContextModule>
+				<mf:clientServerWOContextModule version="1">
+					<bsch:cmdOpCode>22</bsch:cmdOpCode>
+					<bsch:cmdOperand>0</bsch:cmdOperand>
+				</mf:clientServerWOContextModule>
+				<mf:attributes>
+					<mf:attribute name="Список">
+						<mf:type>
+							<v8:TypeSet>dl:DynamicList</v8:TypeSet>
+						</mf:type>
+						<mf:extInformation>
+							<mf:mainTable>Catalog.ВидыЦен</mf:mainTable>
+							<mf:mainTableCategory>1</mf:mainTableCategory>
+						</mf:extInformation>
+						<mf:main>true</mf:main>
+					</mf:attribute>
+				</mf:attributes>
+				<mf:mainElement>
+					<mf:autoCommandBar name="ФормаКоманднаяПанель" type="AutoCommandBar"/>
+					<mf:group name="СписокКомпоновщикНастроекПользовательскиеНастройки" type="UsualGroup">
+						<mf:title>
+							<v8:item>
+								<v8:lang>ru</v8:lang>
+								<v8:content>Группа пользовательских настроек</v8:content>
+							</v8:item>
+						</mf:title>
+						<mf:verticalStretch>false</mf:verticalStretch>
+						<mf:usualData group="Vertical">
+							<mf:showTitle>false</mf:showTitle>
+						</mf:usualData>
+					</mf:group>
+					<mf:table name="Список" dataPath="Список" defaultItem="true">
+						<mf:representation>List</mf:representation>
+						<mf:initialTreeView>ExpandTopLevel</mf:initialTreeView>
+						<mf:rowPictureDataPath>Список.DefaultPicture</mf:rowPictureDataPath>
+						<mf:useAlternationRowColor>true</mf:useAlternationRowColor>
+						<mf:commandBarLocation>None</mf:commandBarLocation>
+						<mf:autoCommandBar name="СписокКоманднаяПанель" type="AutoCommandBar">
+							<mf:autoMenuData>
+								<mf:autofill>false</mf:autofill>
+							</mf:autoMenuData>
+						</mf:autoCommandBar>
+						<mf:contextMenu name="СписокКонтекстноеМеню" type="ContextMenu"/>
+						<mf:field name="Наименование" kind="LabelField" dataPath="Список.Description" defaultItem="true">
+							<mf:contextMenu name="НаименованиеКонтекстноеМеню" type="ContextMenu"/>
+						</mf:field>
+						<mf:field name="Код" kind="LabelField" dataPath="Список.Code">
+							<mf:contextMenu name="КодКонтекстноеМеню" type="ContextMenu"/>
+						</mf:field>
+					</mf:table>
+				</mf:mainElement>
+			</form>
+		</form>
 	</catalog>
 	<catalog name="Товары" id="5a77ed34-389a-45e7-85f4-1a2a7b95fd80">
 		<synonym>
@@ -3524,9 +3662,9 @@ AAAAAAQABADMAAAAEDEAAAAA</picture>
 			<bsch:cmdOpCode>22</bsch:cmdOpCode>
 			<bsch:cmdOperand>0</bsch:cmdOperand>
 		</managerModule>
-		<objectModule version="1" startAddr="104">
-			<bsch:cmdOpCode>1,2,40,1,45,39,39,1,1,2,18,21,5,1,40,1,3,18,51,16,1,3,12,4,4,18,19,5,1,16,1,3,12,4,16,1,3,2,18,20,1,1,3,18,20,1,1,3,3,4,18,21,5,1,18,20,1,1,3,7,16,39,1,1,2,65,29,40,1,3,4,18,20,1,1,3,4,18,20,1,1,3,4,18,20,1,39,1,1,22,1,3,2,12,18,21,5,1,12,4,24,16,1,22,22,22</bsch:cmdOpCode>
-			<bsch:cmdOperand>9,0,7,11,0,88,7,12,15,1,0,0,0,15,62,18,2,0,1,0,19,2,2,3,4,2,1,0,19,0,20,2,5,6,0,21,2,2,1,7,21,22,2,0,8,22,25,1,1,6,1,10,0,25,1,9,25,27,0,0,0,62,29,32,3,0,0,87,35,1,12,1,11,35,36,1,13,1,11,36,37,1,14,1,11,37,87,39,41,0,45,1,4,15,0,16,0,45,17,18,0,0,47,0,0,0</bsch:cmdOperand>
+		<objectModule version="1" startAddr="96">
+			<bsch:cmdOpCode>1,2,40,1,45,39,39,1,1,2,18,21,5,1,40,1,3,18,51,16,1,3,12,4,4,18,19,5,1,16,1,3,12,4,16,1,3,2,18,20,1,1,3,18,20,1,1,3,3,4,18,21,5,1,18,20,1,1,3,7,16,39,1,1,2,65,29,40,1,3,4,18,20,1,1,3,4,18,20,1,1,3,4,18,20,1,39,1,1,22,1,3,4,16,1,22,22,22</bsch:cmdOpCode>
+			<bsch:cmdOperand>9,0,7,11,0,88,7,12,15,1,0,0,0,15,62,18,2,0,1,0,19,2,2,3,4,2,1,0,19,0,20,2,5,6,0,21,2,2,1,7,21,22,2,0,8,22,25,1,1,6,1,10,0,25,1,9,25,27,0,0,0,62,29,32,3,0,0,87,35,1,12,1,11,35,36,1,13,1,11,36,37,1,14,1,11,37,87,39,41,0,45,1,15,0,47,0,0,0</bsch:cmdOperand>
 			<bsch:constant>SПустая</bsch:constant>
 			<bsch:constant>SСообщениеПользователю</bsch:constant>
 			<bsch:constant>SТекст</bsch:constant>
@@ -3542,15 +3680,11 @@ AAAAAAQABADMAAAAEDEAAAAA</picture>
 			<bsch:constant>SРегион</bsch:constant>
 			<bsch:constant>SГород</bsch:constant>
 			<bsch:constant>SДом</bsch:constant>
-			<bsch:constant>SМобильные</bsch:constant>
-			<bsch:constant>SЭтотУзел</bsch:constant>
-			<bsch:constant>SКод</bsch:constant>
-			<bsch:constant>S-</bsch:constant>
+			<bsch:constant>SМоб-</bsch:constant>
 			<bsch:variable name="ЭтоГруппа" isExternal="true"/>
 			<bsch:variable name="ВидЦен" isExternal="true"/>
 			<bsch:variable name="ЭтотОбъект" isExternal="true"/>
 			<bsch:variable name="Улица" isExternal="true"/>
-			<bsch:variable name="ПланыОбмена" isExternal="true"/>
 			<bsch:procedure name="ОбработкаПроверкиЗаполнения" parametersCount="2" startAddr="0">
 				<bsch:variable name="Отказ" isLocal="true" isParam="true"/>
 				<bsch:variable name="ПроверяемыеРеквизиты" isLocal="true" isParam="true"/>
